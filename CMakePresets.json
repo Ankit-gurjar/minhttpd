@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "macos-debug",
+      "displayName": "macOS - Debug",
+      "description": "Debug build with warnings and CTest enabled.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON",
+        "MINHTTPD_ENABLE_WARNINGS": "ON",
+        "MINHTTPD_ENABLE_SANITIZERS": "OFF"
+      }
+    },
+    {
+      "name": "macos-asan",
+      "displayName": "macOS - Debug + Sanitizers",
+      "description": "Debug build with AddressSanitizer and UndefinedBehaviorSanitizer.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/asan",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON",
+        "MINHTTPD_ENABLE_WARNINGS": "ON",
+        "MINHTTPD_ENABLE_SANITIZERS": "ON"
+      }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "macOS - Release",
+      "description": "Optimized release build.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON",
+        "MINHTTPD_ENABLE_WARNINGS": "ON",
+        "MINHTTPD_ENABLE_SANITIZERS": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "macos-debug",
+      "configurePreset": "macos-debug"
+    },
+    {
+      "name": "macos-asan",
+      "configurePreset": "macos-asan"
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "macos-debug",
+      "configurePreset": "macos-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "macos-asan",
+      "configurePreset": "macos-asan",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

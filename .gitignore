@@ -1,0 +1,36 @@
+# CMake build output
+/build/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+build.ninja
+.ninja_deps
+.ninja_log
+
+# CMake user-specific settings
+CMakeUserPresets.json
+
+# IDE/editor files
+.vscode/*.log
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Compilation database is generated inside build directories
+compile_commands.json
+
+# Crash dumps / profiling output
+*.dSYM/
+*.profraw
+*.profdata
+core
+core.*
